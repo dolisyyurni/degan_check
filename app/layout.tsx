@@ -31,8 +31,8 @@ export default function RootLayout({
             <main>
               {children}
             </main>
+            <Footer />
           </div>
-          <Footer />
         </body>
       </html>
     </ClerkProvider>

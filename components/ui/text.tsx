@@ -7,4 +7,12 @@ const Title=({ children, className }: { children: React.ReactNode; className?: s
     </h2>
 )}
 
-export { Title };
+const SubText=({ children, className }: { children: React.ReactNode; className?: string })=>{
+    return (
+    <p className={cn("text-gray600 text-sm", className)}>
+        {children}
+    </p>
+    )
+}
+
+export { Title, SubText };
