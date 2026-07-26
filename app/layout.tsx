@@ -26,8 +26,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className="font-poppins antialiased">
-          <Header />
-          {children}
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+          </div>
           <Footer />
         </body>
       </html>
