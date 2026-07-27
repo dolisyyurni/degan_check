@@ -7,6 +7,13 @@ const Title=({ children, className }: { children: React.ReactNode; className?: s
     </h2>
 )}
 
+const SubTitle=({ children, className }: { children: React.ReactNode; className?: string })=>{
+    return (
+    <h3 className={cn("font-semibold text-gray-900 font-sans", className)}>
+        {children}
+    </h3>
+)}
+
 const SubText=({ children, className }: { children: React.ReactNode; className?: string })=>{
     return (
     <p className={cn("text-gray600 text-sm", className)}>
@@ -15,4 +22,4 @@ const SubText=({ children, className }: { children: React.ReactNode; className?:
     )
 }
 
-export { Title, SubText };
+export { Title, SubTitle, SubText };
