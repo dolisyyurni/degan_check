@@ -87,7 +87,21 @@ export const productType = defineType({
         }),
 
         defineField({
-            
+            name: "variant",
+            title: "Product Type",
+            type: "string",
+            options: [
+                { title: "Drinks", value: "drinks"},
+                {title: "Food", value: "food" },
+            ],
+        }),
+
+        defineField({
+            name: "isFeatured",
+            title: "Featured Product",
+            type: "boolean",
+            description: "Toogle to featured on or off",
+            initialValue: false,
         })
     ],
 })
