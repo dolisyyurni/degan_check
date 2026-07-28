@@ -90,10 +90,12 @@ export const productType = defineType({
             name: "variant",
             title: "Product Type",
             type: "string",
-            options: [
-                { title: "Drinks", value: "drinks"},
-                {title: "Food", value: "food" },
-            ],
+            options: {
+                list: [
+                    { title: "Drinks", value: "drinks"},
+                    { title: "Food", value: "food" },
+                ],
+            }, 
         }),
 
         defineField({
@@ -104,4 +106,21 @@ export const productType = defineType({
             initialValue: false,
         })
     ],
+
+    preview: {
+        select: {
+            title: "name", 
+            media: "images",
+            subtitle: "price",
+        },
+        prepare(selection) {
+            const { title, subtitle, media } = selection;
+            const image = media && media[0];
+            return {
+                title: title,
+                subtitle: `$${subtitle}`,
+                media: image,
+            }
+        }
+    }
 })
