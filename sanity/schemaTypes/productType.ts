@@ -8,7 +8,7 @@ export const productType = defineType({
     icon: TrolleyIcon,
     fields: [
         defineField({
-            name: "title",
+            name: "name",
             title: "Product Name",
             type: "string",
             validation: (Rule) => Rule.required(),
