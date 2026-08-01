@@ -118,9 +118,12 @@ export const productType = defineType({
             const image = media && media[0];
             return {
                 title: title,
-                subtitle: `$${subtitle}`,
+                subtitle: new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                }).format(subtitle),
                 media: image,
-            }
+            };
         }
     }
 })
