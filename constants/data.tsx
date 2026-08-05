@@ -21,3 +21,8 @@ export const categoriesData =[
     {title: "Snacks", link: "snacks"},
     {title: "Noodle", link: "noodle"},
 ];
+
+export const productType = [
+    {title: "Food", link: "food"},
+    {title: "Drinks", link: "drinks"},
+]
