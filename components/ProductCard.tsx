@@ -8,7 +8,6 @@ import { Flame } from 'lucide-react'
 import AddToWishListButton from './AddToWishListButton';
 
 const ProductCard = ({ product }: { product: Product }) => {
-    console.log(product);
   return (
     <div className="text-sm border-[1px] border-dark_blue/20 rounded-md bg-white group">
       <div className="relative group aspect-square overflow-hidden bg-shop_light_bg">
@@ -61,7 +60,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       <div className="p-3 flex flex-col gap-2">
-        {product?.category && <p>{product?.category?.map((cat) => cat).join(", ")}</p>}
+        {product?.category && <p className="uppercase line-clamp-1 text-xs text-shop_light_text">{product?.category?.map((cat) => cat).join(", ")}</p>}
       </div>
     </div>
   )
