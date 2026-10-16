@@ -5,7 +5,8 @@ import { urlFor } from '@/sanity/lib/image'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 import { Flame } from 'lucide-react'
-import AddToWishListButton from './AddToWishListButton';
+import AddToWishListButton from './AddToWishListButton'
+import { Title } from './ui/text';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -13,10 +14,13 @@ const ProductCard = ({ product }: { product: Product }) => {
       <div className="relative group aspect-square overflow-hidden bg-shop_light_bg">
         {product?.images && 
         <Image 
-        src={urlFor(product?.images[0]).url()} 
-        alt={product.name ?? "Product image"} loading="lazy" fill sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
-        className={`object-contain overflow-hidden transition-transform hoverEffect
-            ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+        src={urlFor(product.images[0]).url()}
+            alt="productImage"
+            width={500}
+            height={500}
+            priority
+            className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg duration-500 
+              ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
         /> }
 
         <AddToWishListButton product={product} />
@@ -61,6 +65,8 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       <div className="p-3 flex flex-col gap-2">
         {product?.category && <p className="uppercase line-clamp-1 text-xs text-shop_light_text">{product?.category?.map((cat) => cat).join(", ")}</p>}
+
+        <Title className="text-lg line-clamp-1">{product?.name}</Title>
       </div>
     </div>
   )
