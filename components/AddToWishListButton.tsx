@@ -6,7 +6,7 @@ import React from 'react'
 const AddToWishListButton = ({ product, className,}: { product: Product; className?: string; }) => {
   return (
     <div className={cn("absolute top-2 right-2 z-10", className)}>
-      <div className={'p-1.5 rounded-full hover:bg-shop_dark_green hover:text-white hoverEffect bg-white/50'}>
+      <div className={'p-1.5 rounded-full hover:bg-shop_dark_green hover:text-white hoverEffect bg-shop_lighter_bg'}>
         <Heart size={15} />
       </div>
     </div>

@@ -14,7 +14,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         {product?.images && 
         <Image 
         src={urlFor(product?.images[0]).url()} 
-        alt="ProductImage" loading="lazy" width={700} height={700} /> }
+        alt="ProductImage" loading="lazy" width={700} height={700} 
+        className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg hoverEffect
+            ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
+        /> }
 
         <AddToWishListButton product={product} />
         {product?.status === "sale" && (
@@ -57,7 +60,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       <div className="p-3">
-        Product details
+        {product?.category && <p>{product?.category?.map((cat) => cat).join(", ")}</p>}
       </div>
     </div>
   )
