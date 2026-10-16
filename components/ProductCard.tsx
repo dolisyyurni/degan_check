@@ -10,12 +10,12 @@ import AddToWishListButton from './AddToWishListButton';
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="text-sm border-[1px] border-dark_blue/20 rounded-md bg-white group">
-      <div className="relative group overflow-hidden bg-shop_light_bg">
+      <div className="relative group aspect-square overflow-hidden bg-shop_light_bg">
         {product?.images && 
         <Image 
         src={urlFor(product?.images[0]).url()} 
-        alt="ProductImage" loading="lazy" width={700} height={700} 
-        className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg hoverEffect
+        alt={product.name ?? "Product image"} loading="lazy" fill sizes="(max-width: 768px) 50vw, (max-width: 1280px) 33vw, 20vw"
+        className={`object-contain overflow-hidden transition-transform hoverEffect
             ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
         /> }
 
