@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  iamges:{
+  images:{
     remotePatterns:[{
       protocol: 'https',
       hostname: 'cdn.sanity.io',
