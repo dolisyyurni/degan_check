@@ -1,3 +1,4 @@
+"use client"
 import { Product } from '@/sanity.types';
 import React from 'react'
 import { Button } from './ui/button';
@@ -11,9 +12,12 @@ interface Props{
 
 const AddToCartButton = ({ product, className }: Props) => {
   const isOutOfStock = product?.stock === 0;
+  const handleAddToCart = () => {
+    window.alert ("Added to Cart")
+  }
   return (
     <div>
-      <Button className={cn("w-full text-white bg-shop_dark_green/80 border border-shop_dark_green/80 font-semibold tracking-wide hover:text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
+      <Button onClick={handleAddToCart} disabled={isOutOfStock} className={cn("w-full text-shop_light_bg shadow-none bg-shop_dark_green/80 border border-shop_dark_green/80 font-semibold tracking-wide hover:text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
         <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
       </Button>
     </div>
