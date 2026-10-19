@@ -8,6 +8,7 @@ import { Flame, StarIcon } from 'lucide-react'
 import AddToWishListButton from './AddToWishListButton'
 import { Title } from './ui/text';
 import PriceView from './PriceView';
+import AddToCartButton from './AddToCartButton';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -88,6 +89,8 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         <PriceView price={product?.price} discount={product?.discount} className="text-sm"/>
+        
+        <AddToCartButton />
       </div>
     </div>
   )
