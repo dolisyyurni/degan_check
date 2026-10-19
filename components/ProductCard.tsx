@@ -90,7 +90,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
         <PriceView price={product?.price} discount={product?.discount} className="text-sm"/>
         
-        <AddToCartButton />
+        <AddToCartButton product={product} className="w-36 rounded-full" />
       </div>
     </div>
   )

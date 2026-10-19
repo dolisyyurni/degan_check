@@ -1,8 +1,22 @@
+import { Product } from '@/sanity.types';
 import React from 'react'
+import { Button } from './ui/button';
+import { ShoppingBag } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-const AddToCartButton = () => {
+interface Props{
+  product: Product;
+  className?: string;
+}
+
+const AddToCartButton = ({ product, className }: Props) => {
+  const isOutOfStock = product?.stock === 0;
   return (
-    <div>AddToCartButton</div>
+    <div>
+      <Button className={cn("w-full text-white bg-shop_dark_green/80 border border-shop_dark_green/80 font-semibold tracking-wide hover:text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
+        <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
+      </Button>
+    </div>
   )
 }
 
