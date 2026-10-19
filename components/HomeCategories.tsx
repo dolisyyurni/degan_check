@@ -12,7 +12,7 @@ const HomeCategories = ({categories}: {categories: Category[]}) => {
 
         <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {categories?.map((category) => 
-          <div key={category?._id} className="bg-shop_light_bg p-5 flex items-center gap-3 group">
+          <div key={category?._id} className="bg-shop_light_bg p-5 flex items-center gap-3 group rounded-md">
             {category?.image && (
               <div className="h-20 w-20 aspect-square shrink-0 overflow-hidden rounded-md border border-shop_orange/30 hover: border-shop_orange hoverEffect p-1">
                 <Link href={'/category/${category?.slug?.current}'} className="block h-full w-full">
