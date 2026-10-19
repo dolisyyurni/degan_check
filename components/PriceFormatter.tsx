@@ -11,6 +11,7 @@ const PriceFormatter = ({amount, className}: Props) => {
         currency: "IDR",
         minimumFractionDigits: 0,
     });
+    
     return (
         <span className={twMerge("text-sm dont-semibold text-darkColor", className)}>{formattedPrice}</span>
     )
