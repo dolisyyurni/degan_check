@@ -69,9 +69,9 @@ const ProductCard = ({ product }: { product: Product }) => {
         <Title className="!text-base line-clamp-1">{product?.name}</Title>
         
         <div className="flex items-center gap-2">
-            <div className="flex items-center">
+            <div className="flex items-center gap-0.5">
                 {[...Array(5)].map((_, index) => (
-                    <StarIcon size={13} key={index} className={index < 4 ?"text-shop_lighter_green":"text-shop_lighter_text"}
+                    <StarIcon size={12} key={index} className={index < 4 ?"text-shop_lighter_green":"text-shop_lighter_text"}
                     fill={index < 4 ? "#93D991":"#ababab"} />
                 ))}
             </div>
@@ -79,6 +79,11 @@ const ProductCard = ({ product }: { product: Product }) => {
             <p className="text-shop_light_text text-xs tracking-wide">
                 5 Reviews
             </p>
+        </div>
+
+        <div className="flex items-center gap-2.5">
+            <p className="font-medium">In Stock</p>
+            <p className={`text-shop_light_green font-semibold`}>{(product?.stock as number) > 0 ?product?.stock : "unavailable"}</p>
         </div>
       </div>
     </div>
