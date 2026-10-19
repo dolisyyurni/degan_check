@@ -71,7 +71,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         <div>
             <div className="flex items-center">
                 {[...Array(5)].map((_, index) => (
-                    <StarIcon key={index} className={index < 4 ?"text-shop_light_green":"text-shop_light_text"}
+                    <StarIcon key={index} className={index < 4 ?"text-shop_lighter_green":"text-shop_lighter_text"}
                     fill={index < 4 ? "#93D991":"#ababab"} />
                 ))}
             </div>
