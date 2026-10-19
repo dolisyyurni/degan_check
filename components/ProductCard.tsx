@@ -13,7 +13,7 @@ import AddToCartButton from './AddToCartButton';
 const ProductCard = ({ product }: { product: Product }) => {
   return (
     <div className="text-sm border-[1px] border-dark_blue/20 rounded-md bg-white group">
-      <div className="relative group aspect-square overflow-hidden bg-shop_light_bg">
+      <div className="relative group flex aspect-square items-center justify-center overflow-hidden bg-shop_light_bg">
         {product?.images && 
         <Image 
         src={urlFor(product.images[0]).url()}
@@ -21,7 +21,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             width={500}
             height={500}
             priority
-            className={`w-full h-64 object-contain overflow-hidden transition-transform bg-shop_light_bg duration-500 
+            className={`h-full w-full object-cover object-center overflow-hidden transition-transform bg-shop_light_bg duration-500 
               ${product?.stock !== 0 ? "group-hover:scale-105" : "opacity-50"}`}
         /> }
 
