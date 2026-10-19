@@ -1,4 +1,4 @@
-import { twMerge } from "tailwind-merge";
+import { cn } from "@/lib/utils";
 
 interface Props {
     amount: number | undefined;
@@ -9,10 +9,12 @@ const PriceFormatter = ({amount, className}: Props) => {
     const formattedPrice = new Number(amount).toLocaleString("en-US", {
         style: "currency",
         currency: "IDR",
-        minimumFractionDigits: 0,
+        minimumFractionDigits: 2,
     });
-    
+
     return (
-        <span className={twMerge("text-sm dont-semibold text-darkColor", className)}>{formattedPrice}</span>
+        <span className={cn("text-sm dont-semibold text-darkColor", className)}>{formattedPrice}</span>
     )
 }
+
+export default PriceFormatter;
