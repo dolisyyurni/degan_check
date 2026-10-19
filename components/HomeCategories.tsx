@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
+import Link from 'next/link';
 import { Title } from './ui/text';
 import { Category } from '@/sanity.types';
 import { urlFor } from '@/sanity/lib/image';
@@ -11,8 +12,14 @@ const HomeCategories = ({categories}: {categories: Category[]}) => {
 
         <div>
           {categories?.map((category) => <div key={category?._id}>
-            {category?.image && (<Image src={urlFor(category?.image).url()} alt="categoryImage" width={500} height={500} className="w-full h-full object-contain group-hover:scale-110 hoverEffect"
-            />)}
+            {category?.image && (
+              <div className="overflow-hidden border border-shop_orange/30 hover: border-shop_orange hoverEffect w-20 h-20 p-1">
+                <Link href={'/category/${category?.slug?.current}'}>
+                  <Image src={urlFor(category?.image).url()} alt="categoryImage" width={500} height={500} className="w-full h-full object-contain group-hover:scale-110 hoverEffect"
+                  />
+                </Link>
+              </div>
+              )}
             </div>)}
         </div>
     </div>
