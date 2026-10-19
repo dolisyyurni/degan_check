@@ -63,10 +63,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         )}
       </div>
 
-      <div className="p-3 flex flex-col gap-2">
-        {product?.category && <p className="uppercase line-clamp-1 text-xs text-shop_light_text">{product?.category?.map((cat) => cat).join(", ")}</p>}
+      <div className="p-3 flex flex-col gap-1">
+        {product?.category && <p className="uppercase line-clamp-1 !text-xs text-shop_light_text">{product?.category?.map((cat) => cat).join(", ")}</p>}
 
-        <Title className="text-lg line-clamp-1">{product?.name}</Title>
+        <Title className="!text-base line-clamp-1">{product?.name}</Title>
       </div>
     </div>
   )
