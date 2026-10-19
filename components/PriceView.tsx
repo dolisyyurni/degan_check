@@ -8,16 +8,13 @@ interface Props {
 }
 
 const PriceView = ({price, discount, className}: Props) => {
-    const discountedPrice =
-        price !== undefined && discount !== undefined
-            ? price - (price * discount) / 100
-            : price;
 
     return (
         <div>
-            {discountedPrice !== undefined &&( 
-                <PriceFormatter amount={discountedPrice} className="text-shop_dark_green"/>
-            )}
+            <PriceFormatter amount={price} className="text-shop_dark_green"/>
+            {price && discount && (<PriceFormatter 
+            amount={price + (discount * price) / 100} 
+            className="line-through font-normal text-shop_lighter_text" />)}
         </div>
     )    
 }
