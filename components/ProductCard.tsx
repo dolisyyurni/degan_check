@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
-import { Flame } from 'lucide-react'
+import { Flame, StarIcon } from 'lucide-react'
 import AddToWishListButton from './AddToWishListButton'
 import { Title } from './ui/text';
 
@@ -67,6 +67,15 @@ const ProductCard = ({ product }: { product: Product }) => {
         {product?.category && <p className="uppercase line-clamp-1 !text-xs text-shop_light_text">{product?.category?.map((cat) => cat).join(", ")}</p>}
 
         <Title className="!text-base line-clamp-1">{product?.name}</Title>
+        
+        <div>
+            <div className="flex items-center">
+                {[...Array(5)].map((_, index) => (
+                    <StarIcon key={index} className={index < 4 ?"text-shop_light_green":"text-shop_light_text"}
+                    fill={index < 4 ? "#93D991":"#ababab"} />
+                ))}
+            </div>
+        </div>
       </div>
     </div>
   )
