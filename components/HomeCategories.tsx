@@ -1,6 +1,8 @@
 import React from 'react'
+import Image from 'next/image';
 import { Title } from './ui/text';
 import { Category } from '@/sanity.types';
+import { urlFor } from '@/sanity/lib/image';
 
 const HomeCategories = ({categories}: {categories: Category[]}) => {
   return (
@@ -8,7 +10,10 @@ const HomeCategories = ({categories}: {categories: Category[]}) => {
         <Title className="bordder-b pb-3">Popular Categories</Title>
 
         <div>
-          {categories?.map((category) => <div>category</div>)}
+          {categories?.map((category) => <div key={category?._id}>
+            {category?.image && (<Image src={urlFor(category?.image).url()} alt="categoryImage" width={500} height={500} className="w-full h-full object-contain group-hover:scale-110 hoverEffect"
+            />)}
+            </div>)}
         </div>
     </div>
   )
