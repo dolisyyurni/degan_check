@@ -31,7 +31,7 @@ const CustomerService = async () => {
                 <Title>Customer Service</Title>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-2.5 p-2 shadow-sm shadow-shop_light_green/20 py-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gap-2.5 p-2 shadow-sm hover:shadow-shop_light_green/20 py-5">
                 {extraData?.map((item, index) =>(
                     <div key={index} className="flex items-center gap-3 group text-lightColor hover:text-shop_light_green">
                         <span className="inLine-flex scale-100 group-hover:scale-90 hoverEffect">
