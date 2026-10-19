@@ -9,7 +9,7 @@ const PriceFormatter = ({amount, className}: Props) => {
     const formattedPrice = new Number(amount).toLocaleString("en-US", {
         style: "currency",
         currency: "IDR",
-        minimumFractionDigits: 2,
+        minimumFractionDigits: 0,
     });
 
     return (

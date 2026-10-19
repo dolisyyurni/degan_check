@@ -1,4 +1,6 @@
 import React from 'react'
+import PriceFormatter from './PriceFormatter';
+
 interface Props {
     price: number | undefined;
     discount: number | undefined;
@@ -6,12 +8,13 @@ interface Props {
 }
 
 const PriceView = ({price, discount, className}: Props) => {
-    return 
-    <div>
+    return (
         <div>
-        {price}
+            <PriceFormatter amount={price} className="text-shop_dark_green"/>
+            {price && discount && <PriceFormatter amount={price} />}
         </div>
-    </div>
+    )
+    
 };
 
 export default PriceView;
