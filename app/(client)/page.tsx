@@ -5,6 +5,7 @@ import ProductGrid from "@/components/ProductGrid";
 import HomeCategories from "@/components/HomeCategories";
 import { getCategories } from "@/sanity/queries";
 import CustomerService from "@/components/CustomerService";
+import LatestBlog from "@/components/LatestBlog";
 
 const Home = async() =>{
   const categories= await getCategories(6);
@@ -17,6 +18,7 @@ const Home = async() =>{
       </div>
       <HomeCategories categories={categories} />
       <CustomerService/>
+      <LatestBlog/>
     </Container>
   );
 };
