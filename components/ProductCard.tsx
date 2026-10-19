@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { Flame, StarIcon } from 'lucide-react'
 import AddToWishListButton from './AddToWishListButton'
 import { Title } from './ui/text';
+import PriceView from './PriceView';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -85,6 +86,8 @@ const ProductCard = ({ product }: { product: Product }) => {
             <p className="font-medium">In Stock</p>
             <p className={`${product?.stock === 0 ? "text-red-600" : "text-shop_light_green font-semibold"}`}>{(product?.stock as number) > 0 ?product?.stock : "unavailable"}</p>
         </div>
+
+        <PriceView price={product?.price} discount={product?.discount} className="text-sm"/>
       </div>
     </div>
   )
