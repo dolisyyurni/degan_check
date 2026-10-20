@@ -1,5 +1,6 @@
 import React from 'react'
 import { Title } from './ui/text';
+import { getLatestBlogs } from '@/sanity/queries';
 
 const LatestBlog = async() => {
     const blogs = await getLatestBlogs()
