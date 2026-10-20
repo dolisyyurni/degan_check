@@ -1,8 +1,8 @@
 import React from 'react'
 
-const LatestBlog = () => {
+const LatestBlog = async() => {
     return(
-        <div>
+        <div className="mb-10 lg:mb-20">
             LatestBlog
         </div>
     )
