@@ -1,9 +1,21 @@
+import Container from '@/components/Container';
+import { Title } from '@/components/ui/text';
+import { getCategories } from '@/sanity/queries';
 import React from 'react'
 
-const CategoryPage = () => {
+const CategoryPage = async({params}:{params: Promise<{slug: string}>}) => {
+    const { slug } = await params;
+    const categories = await getCategories();
     return (
-        <div>
-            CategoryPage
+        <div className="py-10">
+            <Container>
+                <Title>
+                    Product by Categories:{" "}
+                    <span className="font-bold text-green-600 capitalize tracking-wide">
+                        {slug && slug}
+                    </span>
+                </Title>
+            </Container>
         </div>
     )
 }
