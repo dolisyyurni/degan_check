@@ -6,7 +6,7 @@ const LatestBlog = async() => {
     const blogs = await getLatestBlogs()
     return(
         <div className="mb-10 lg:mb-20">
-            <Title>LatestBlog</Title>
+            <Title>LatestBlog </Title>
         </div>
     )
 }
