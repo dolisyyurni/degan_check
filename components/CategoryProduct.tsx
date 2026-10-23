@@ -31,6 +31,10 @@ const CategoryProduct = ({categories, slug}: Props) => {
             </Button>
           ))}
         </div>
+
+        <div className="flex-1">
+          product
+        </div>
     </div>
   )
 }
