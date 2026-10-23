@@ -10,7 +10,7 @@ const HeaderMenu = () => {
   console.log(pathname);
 
   return (
-    <div className="hidden md:inline-flex w-1/3 items-center gap-20 capitalize font-semibold text-lightColor font-normal justify-center">
+    <div className="hidden md:inline-flex w-1/3 items-center gap-10 capitalize font-semibold text-lightColor font-normal justify-center">
     {HeaderData?.map((item) => (
         <Link
           key={item.title}
