@@ -19,7 +19,7 @@ const CategoryProduct = ({categories, slug}: Props) => {
     <div className="py-5 flex flex-col md:flex-row items-start gap-5">
         <div>
           {categories?.map((item)=>(
-            <Button>
+            <Button key={item?._id} className={`bg-transparent border-0 p-0 rounded-none text-darkColor shadow-none hover:bg-darkRed hover:text-white font-semibold hoverEffect border-b last:border-b-0 capitalize`}>
               <p>
                 {item?.title}
               </p>
