@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button';
 import { client } from '@/sanity/lib/client';
 import { motion } from 'motion/react'
+import { Loader } from 'lucide-react';
 
 interface Props {
     categories: Category[];
@@ -54,7 +55,12 @@ const CategoryProduct = ({categories, slug}: Props) => {
         </div>
 
         <div className="flex-1">
-          {loading ? <motion.div>hello</motion.div>:<>product</>}
+          {loading ? <div className="flex flex-col items-center justify-center py-10 min-h-80 space-y-4 text-center bg-gray-100 rounded-lg w-full">
+            <motion.div className="flex items-center space-x-2 text-blue-600">
+              <Loader className="w-5 h-5 animate-spin"/>
+              <span>Product is loading...</span>
+          </motion.div>
+          </div> : <>product</>}
         </div>
     </div>
   )
