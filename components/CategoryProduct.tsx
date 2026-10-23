@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button';
 import { client } from '@/sanity/lib/client';
+import { motion } from 'motion/react'
 
 interface Props {
     categories: Category[];
@@ -53,7 +54,7 @@ const CategoryProduct = ({categories, slug}: Props) => {
         </div>
 
         <div className="flex-1">
-          product
+          {loading ? <motion.div>hello</motion.div>:<>product</>}
         </div>
     </div>
   )
