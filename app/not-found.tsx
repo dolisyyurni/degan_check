@@ -1,6 +1,7 @@
 import Logo from '@/components/Logo'
 import Link from 'next/link'
 import React from 'react'
+import './globals.css'
 
 const NotFoundPage = () => {
     return (
@@ -20,8 +21,11 @@ const NotFoundPage = () => {
 
                 <div className="mt-8 space-y-6">
                     <div className="rounded-md shadow-sm space-y-4">
-                        <Link href="/"  className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-amazonBlue bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazonBlue">
-                            Help
+                        <Link href="/"  className="w-full flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md text-white bg-shop_dark_green/80 hover:bg-shop_dark_green focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazonOrangeDark hoverEffect">
+                            Go to Degan Check&apos;s home page
+                        </Link>
+                        <Link href="/help" className="w-full flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-semibold rounded-md text-amazonBlue bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amazonBlue">
+                        Help
                         </Link>
                     </div>
                 </div>

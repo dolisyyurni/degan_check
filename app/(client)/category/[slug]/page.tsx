@@ -2,11 +2,16 @@ import CategoryProduct from '@/components/CategoryProduct';
 import Container from '@/components/Container';
 import { Title } from '@/components/ui/text';
 import { getCategories } from '@/sanity/queries';
+import { notFound } from 'next/navigation';
 import React from 'react'
 
 const CategoryPage = async({params}:{params: Promise<{slug: string}>}) => {
     const { slug } = await params;
     const categories = await getCategories();
+    if (!categories?.some((category) => category.slug?.current === slug)) {
+        notFound();
+    }
+
     return (
         <div className="py-10">
             <Container>
