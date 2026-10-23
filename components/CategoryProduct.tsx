@@ -2,6 +2,7 @@
 import { Category } from '@/sanity.types';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
+import { Button } from './ui/button';
 
 interface Props {
     categories: Category[];
@@ -15,8 +16,16 @@ const CategoryProduct = ({categories, slug}: Props) => {
   const router = useRouter();
 
   return (
-    <div>
-        t
+    <div className="py-5 flex flex-col md:flex-row items-start gap-5">
+        <div>
+          {categories?.map((item)=>(
+            <Button>
+              <p>
+                {item?.title}
+              </p>
+            </Button>
+          ))}
+        </div>
     </div>
   )
 }
