@@ -1,5 +1,5 @@
 import { sanityFetch } from "../lib/live";
-import { LATEST_BLOGS_QUERY } from "./query";
+import { LATEST_BLOGS_QUERY, PRODUCT_BY_SLUG_QUERY } from "./query";
 
 const getCategories=async (quantity?: number) => {
     try {
@@ -27,4 +27,14 @@ const getLatestBlogs = async () => {
     }
 }
 
-export { getCategories, getLatestBlogs }
+const getProductBySlug = async (slug: string) => {
+    try {
+        const product = await sanityFetch({ query: PRODUCT_BY_SLUG_QUERY, params: { slug } });
+        return product?.data || null;
+    } catch (error) {
+        console.log("Error fetching product by ID:", error);
+        return null;
+    }
+}
+
+export { getCategories, getLatestBlogs, getProductBySlug }
