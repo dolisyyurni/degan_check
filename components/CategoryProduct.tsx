@@ -17,10 +17,10 @@ const CategoryProduct = ({categories, slug}: Props) => {
 
   return (
     <div className="py-5 flex flex-col md:flex-row items-start gap-5">
-        <div>
+        <div className="flex flex-col md:main-w-40 border">
           {categories?.map((item)=>(
-            <Button key={item?._id} className={`bg-transparent border-0 p-0 rounded-none text-darkColor shadow-none hover:bg-darkRed hover:text-white font-semibold hoverEffect border-b last:border-b-0 capitalize`}>
-              <p>
+            <Button key={item?._id} className={`bg-transparent border-0 p-0 rounded-none text-darkColor shadow-none hover:bg-shop_orange hover:text-white font-semibold hoverEffect border-b last:border-b-0 capitalize`}>
+              <p className="w-full text-left px-2">
                 {item?.title}
               </p>
             </Button>
