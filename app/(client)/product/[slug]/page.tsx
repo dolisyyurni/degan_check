@@ -1,5 +1,6 @@
 import React from "react";
 import { getProductBySlug } from "@/sanity/queries";
+import  Container  from "@/components/Container";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -7,8 +8,15 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
 
 
     return (
-        <div>ProductPage</div>
-    );
-};
+    <Container className="flex flex-col md:flex-row gap-10 py-10 pb-10">
+        <div>
+            images
+        </div>
+
+        <div>
+            details
+        </div>
+    </Container>
+)};
 
 export default SingleProductPage;
