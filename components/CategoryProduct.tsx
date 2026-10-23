@@ -1,11 +1,13 @@
 "use client"
-import { Category } from '@/sanity.types';
+import { Category, Product } from '@/sanity.types';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button';
 import { client } from '@/sanity/lib/client';
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { Loader2 } from 'lucide-react';
+import NoProductAvailable from './NoProductAvailable';
+import ProductCard from './ProductCard';
 
 interface Props {
     categories: Category[];
@@ -62,8 +64,18 @@ const CategoryProduct = ({categories, slug}: Props) => {
                 <span>Product is loading...</span>
               </div>
             </div> 
-          ) : (
-            <>product</>
+          ) : products?.length > 0 ? (    
+            <div>
+              {products?.map((product: Product)=>(
+                <AnimatePresence key={product._id}>
+                  <motion.div>
+                    <ProductCard product={product}/>
+                  </motion.div>
+                </AnimatePresence>
+              ))}
+            </div>
+          ) : ( 
+            <NoProductAvailable selectedTab={currentSlug} className="mt-0 w-full" />
           )}
         </div>
     </div>
