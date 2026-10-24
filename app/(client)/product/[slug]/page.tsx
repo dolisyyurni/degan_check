@@ -3,6 +3,7 @@ import { getProductBySlug } from "@/sanity/queries";
 import  Container  from "@/components/Container";
 import ImageView from "@/components/ImageView";
 import { StarIcon } from "lucide-react";
+import PriceView from "@/components/PriceView";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -32,6 +33,11 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                     </p>
                 </div>
             </div>
+
+            <div>
+                <PriceView price={product?.price} discount={product?.discount} className="text-lg font-bold" />
+            </div>
+
         </div>
     </Container>
 )};
