@@ -12,10 +12,14 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
         {product?.images && <ImageView images={product?.images} isStock={product?.stock} />}
 
         <div className="w-full md:w-1/2 flex flex-col gap-5">
-            <div>
+            <div className="space-y-1">
                 <h2 className="text-2xl font-bold">
                     {product?.name}
                 </h2>
+
+                <p className="text-sm text-gray-600 tracking-wide">
+                    {product?.description}
+                </p>
             </div>
         </div>
     </Container>
