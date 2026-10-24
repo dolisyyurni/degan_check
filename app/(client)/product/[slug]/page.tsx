@@ -6,14 +6,17 @@ import ImageView from "@/components/ImageView";
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
     const product = await getProductBySlug(slug);
-    const isStock = product?.stock > 0;
 
     return (
-    <Container className="flex flex-col md:flex-row gap-10 py-10 pb-10">
-        {product?.images && <ImageView images={product?.images} isStock={isStock} />}
+    <Container className="flex flex-col md:flex-row gap-10 py-10">
+        {product?.images && <ImageView images={product?.images} isStock={product?.stock} />}
 
         <div className="w-full md:w-1/2 flex flex-col gap-5">
-            details
+            <div>
+                <h2 className="text-2xl font-bold">
+                    {product?.name}
+                </h2>
+            </div>
         </div>
     </Container>
 )};
