@@ -34,8 +34,14 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                 </div>
             </div>
 
-            <div>
+
+
+            <div className="border-t border-b border-gray-200 py-3">
                 <PriceView price={product?.price} discount={product?.discount} className="text-lg font-bold" />
+
+                <p className={`px-4 py-1.5 text-sm font-semibold rounded-lg ${product?.stock === 0 ? "bg-red-600 text-red-600" : "text-green-600 bg-green-100"}`}>
+                    {(product?.stock as number) > 0 ? "In Stock" : "Out of Stock"}
+                </p>
             </div>
 
         </div>
