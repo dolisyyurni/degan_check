@@ -4,6 +4,8 @@ import  Container  from "@/components/Container";
 import ImageView from "@/components/ImageView";
 import { StarIcon } from "lucide-react";
 import PriceView from "@/components/PriceView";
+import AddToCartButton from "@/components/AddToCartButton";
+import FavoriteButton from "@/components/FavoriteButton";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -39,11 +41,15 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
             <div className="border-t border-b border-gray-200 py-3">
                 <PriceView price={product?.price} discount={product?.discount} className="text-lg font-bold" />
 
-                <p className={`px-4 py-1.5 text-sm font-semibold rounded-lg ${product?.stock === 0 ? "bg-red-600 text-red-600" : "text-green-600 bg-green-100"}`}>
+                <p className={`px-4 py-1.5 inline-block text-center text-sm font-semibold rounded-lg ${product?.stock === 0 ? "bg-red-600 text-red-600" : "text-green-600 bg-green-100"}`}>
                     {(product?.stock as number) > 0 ? "In Stock" : "Out of Stock"}
                 </p>
             </div>
 
+            <div className="space-y-2">
+                <AddToCartButton product={product} />
+                <FavoriteButton product={product} />
+            </div>
         </div>
     </Container>
 )};
