@@ -6,12 +6,11 @@ import ImageView from "@/components/ImageView";
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
     const product = await getProductBySlug(slug);
-
+    const isStock = product?.stock > 0;
 
     return (
     <Container className="flex flex-col md:flex-row gap-10 py-10 pb-10">
-        {product?.images && <ImageView />}
-        
+        {product?.images && <ImageView images={product?.images} isStock={isStock} />}
 
         <div className="w-full md:w-1/2 flex flex-col gap-5">
             details
