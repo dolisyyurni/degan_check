@@ -36,8 +36,6 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                 </div>
             </div>
 
-
-
             <div className="border-t border-b border-gray-200 py-3">
                 <PriceView price={product?.price} discount={product?.discount} className="text-lg font-bold" />
 
