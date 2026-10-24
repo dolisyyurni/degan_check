@@ -43,9 +43,11 @@ const ImageView = ({images=[], isStock}: Props) => {
                 </motion.div>
             </AnimatePresence>
 
-            <div>
+            <div className="grid grid-cols-6 gap-2 h-20 md:h-20">
                 {images?.map((image) => (
-                    <button>
+                    <button onClick={() => setActive(image)}
+                    className={`border rounded-md overflow-hidden ${active?._key === image?._key ? "border-darkColor opacity-100" : "opacity-80"}`}>
+
                         <Image src={urlFor(image).url()}
                         alt={`Thumbnail ${image._key}`}
                         width={100} 
