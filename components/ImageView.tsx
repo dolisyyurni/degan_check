@@ -38,10 +38,23 @@ const ImageView = ({images=[], isStock}: Props) => {
                     alt="productImage" 
                     width={700} 
                     height={700} 
-                    priority className={`w-full h-96 max-h-[500px] object-contain group-hover:scale-110 hoverEffect rounded-md ${
+                    priority className={`h-full w-full object-cover object-center object-contain group-hover:scale-110 hoverEffect rounded-md ${
                         isStock === 0 ? "opacity-50" : ""}`} />
                 </motion.div>
             </AnimatePresence>
+
+            <div>
+                {images?.map((image) => (
+                    <button>
+                        <Image src={urlFor(image).url()}
+                        alt={`Thumbnail ${image._key}`}
+                        width={100} 
+                        height={100}
+                        className="w-full h-auto object-contain" />
+                    </button>
+                ))}
+            </div>
+
         </div>
     )
 }
