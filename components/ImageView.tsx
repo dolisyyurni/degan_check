@@ -1,4 +1,6 @@
+"use client"
 import { internalGroqTypeReferenceTo, SanityImageCrop, SanityImageHotspot } from "@/sanity.types";
+import { AnimatePresence } from "framer-motion";
 import React from "react";
 
 interface Props {
@@ -17,10 +19,14 @@ interface Props {
     isStock?: number;
 }
 
-const ImageView = () => {
+const ImageView = ({images=[], isStock}: Props) => {
+    const [active, setActive] = React.useState([0]);
+
     return (
         <div className="w-full md:w-1/2 space-y-2 md:space-y-4">
-            Product Page
+            <AnimatePresence mode="wait">
+
+            </AnimatePresence>
         </div>
     )
 }
