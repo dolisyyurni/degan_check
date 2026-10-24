@@ -10,11 +10,10 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
 
     return (
     <Container className="flex flex-col md:flex-row gap-10 py-10 pb-10">
-        <div>
-            {product?.images && <ImageView />}
-        </div>
+        {product?.images && <ImageView />}
+        
 
-        <div>
+        <div className="w-full md:w-1/2 flex flex-col gap-5">
             details
         </div>
     </Container>
