@@ -33,19 +33,19 @@ const ImageView = ({images=[], isStock}: Props) => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="group relative mx-auto aspect-square w-full min-w-[450px] overflow-hidden rounded-md border border-darkColor/10">
+                 className="group relative mx-auto aspect-square w-full min-w-[450px] overflow-hidden rounded-md border border-darkColor/10">
                     <Image src={urlFor(active).width(1000).height(1000).url()} 
                     alt="productImage"
                     width={700} 
                     height={700} 
-                    priority className={`h-full w-full object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.04] ${
+                     priority className={`h-full w-full object-contain object-center transition-transform duration-300 ease-out group-hover:scale-[1.04] ${
                         isStock === 0 ? " opacity-50" : ""}`} />
                 </motion.div>
             </AnimatePresence>
 
-            <div className="mx-auto grid h-20 w-full max-w-[500px] grid-cols-5 gap-2 md:h-20">
+            <div className="mx-auto grid h-20 w-full max-w-[500px] grid-cols-6 gap-2 md:h-20">
                 {images?.map((image) => (
-                    <button key={image._key} type="button" onClick={() => setActive(image)}
+                     <button key={image._key} type="button" onClick={() => setActive(image)}
                     className={`border rounded-md overflow-hidden ${active?._key === image?._key ? "border-darkColor opacity-100" : "opacity-80"}`}>
 
                         <Image src={urlFor(image).width(1000).height(1000).url()}
