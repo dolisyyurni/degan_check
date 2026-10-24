@@ -81,7 +81,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             </div>
 
             <p className="text-shop_light_text text-xs tracking-wide">
-                5 Reviews
+                120 Reviews
             </p>
         </div>
 
