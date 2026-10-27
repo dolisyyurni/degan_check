@@ -1,8 +1,39 @@
 import React from 'react'
+import { Product } from '@/sanity.types';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from 'radix-ui/accordion';
 
 const ProductCharacteristics = async ({ product }: { product: Product | null | undefined; }) => {
   return (
-    <div>ProductCharacteristics</div>
+    <Accordion type="single" collapsible>
+        <AccordionItem value="item-1" >
+            <AccordionTrigger>
+                {product?.name}: Characteristics
+            </AccordionTrigger>
+
+            <AccordionContent>
+                <p className="flex items-center justify-between">
+                    Type:{" "}
+                    <span className="font-semibold tracking-wide">
+                        {product?.variant}
+                    </span>
+                </p>
+
+                <p className="flex items-center justify-between">
+                    Stock:{" "}
+                    <span className="font-semibold tracking-wide">
+                        {product?.stock ? "Available" : "Out of Stock"}
+                    </span>
+                </p> 
+
+                <p className="flex items-center justify-between">
+                    Benefit:{" "}
+                    <span className="font-semibold tracking-wide">
+                        {product?.stock ? "Available" : "Out of Stock"}
+                    </span>
+                </p> 
+            </AccordionContent>
+        </AccordionItem>
+    </Accordion>
   )
 }
 

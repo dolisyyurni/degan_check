@@ -7,6 +7,7 @@ import PriceView from "@/components/PriceView";
 import AddToCartButton from "@/components/AddToCartButton";
 import FavoriteButton from "@/components/FavoriteButton";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
+import { FaRegQuestionCircle } from "react-icons/fa";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -54,6 +55,18 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
             </div>
 
             <ProductCharacteristics product={product} />
+
+            <div>
+                <div className="flex items-center gap-2 text-sm text-black hover: text-red-600 hoverEffect">
+                    <FaRegQuestionCircle className="text-lg" />
+                    <p>Ask a question</p>
+                </div>
+
+                <div className="flex items-center gap-2 text-sm text-black hover: text-red-600 hoverEffect">
+                    <TbTruckDelivery className="text-lg" />
+                    <p>Delivery & Return</p>
+                </div>
+            </div>
         </div>
     </Container>
 )};
