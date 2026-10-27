@@ -16,9 +16,10 @@ const AddToCartButton = ({ product, className }: Props) => {
   const handleAddToCart = () => {
     window.alert ("Added to Cart")
   }
+
   return (
     <div>
-      <Button onClick={handleAddToCart} disabled={isOutOfStock} className={cn("w-full text-shop_light_bg shadow-none bg-shop_dark_green/80 border border-shop_dark_green/80 font-semibold tracking-wide hover:text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
+      <Button onClick={handleAddToCart} disabled={isOutOfStock} className={cn("w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
         <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
       </Button>
     </div>

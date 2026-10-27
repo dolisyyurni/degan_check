@@ -6,6 +6,7 @@ import { StarIcon } from "lucide-react";
 import PriceView from "@/components/PriceView";
 import AddToCartButton from "@/components/AddToCartButton";
 import FavoriteButton from "@/components/FavoriteButton";
+import ProductCharacteristics from "@/components/ProductCharacteristics";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -44,10 +45,12 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                 </p>
             </div>
 
-            <div className="flex items-center gap-2.5 lg:gap-5">
+            <div className="flex items-center gap-2.5 lg:gap-3">
                 <AddToCartButton product={product} />
                 <FavoriteButton showProduct={true} product={product} />
             </div>
+
+            <ProductCharacteristics product={product} />
         </div>
     </Container>
 )};
