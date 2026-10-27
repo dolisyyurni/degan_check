@@ -8,6 +8,7 @@ import AddToCartButton from "@/components/AddToCartButton";
 import FavoriteButton from "@/components/FavoriteButton";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { FaRegQuestionCircle } from "react-icons/fa";
+import { TbTruckDelivery } from "react-icons/tb";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
