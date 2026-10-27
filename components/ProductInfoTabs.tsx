@@ -31,7 +31,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
 
   return (
     <section className="w-full" aria-label="Product information">
-      <div className="flex w-full max-w-2xl overflow-hidden rounded-lg bg-gray-100" role="tablist" aria-label="Product details">
+      <div className="flex w-full overflow-hidden rounded-lg bg-gray-100" role="tablist" aria-label="Product details">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -41,11 +41,9 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
             aria-selected={activeTab === tab}
             aria-controls="product-tab-panel"
             onClick={() => setActiveTab(tab)}
-            className={`flex-1 rounded-lg px-3 py-3 text-sm font-medium transition-colors ${
+            className={`flex-1 rounded-lg px-3 py-3 text-base font-semibold transition-colors ${
               activeTab === tab
-                ? "bg-white text-shop_dark_green shadow-sm"
-                : "text-gray-600 hover:text-shop_dark_green"
-            }`}
+                ? "bg-white text-shop_dark_green shadow-sm border border-darkColor/10" : "text-gray-500 hover:text-shop_dark_green"}`}
           >
             {tab}
           </button>
@@ -59,13 +57,13 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
         className="min-h-40 py-6 text-sm leading-7 text-gray-600"
       >
         {activeTab === "Description" && (
-          <p className="max-w-4xl whitespace-pre-line">
-            {product.description || "Deskripsi produk belum tersedia."}
+          <p className="whitespace-pre-line text-gray-500 text-sm">
+            {product.description || "Product description is not yet available."}
           </p>
         )}
 
         {activeTab === "Additional Information" && (
-          <dl className="max-w-2xl divide-y divide-gray-200 border-y border-gray-200">
+          <dl className="divide-y divide-gray-200 border-y border-gray-200 justify-center">
             <div className="flex justify-between gap-6 py-3">
               <dt className="font-medium text-gray-800">Type</dt>
               <dd className="capitalize">{product.variant || "—"}</dd>
