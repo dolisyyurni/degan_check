@@ -9,7 +9,8 @@ import FavoriteButton from "@/components/FavoriteButton";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
-import { FiShare2 } from "react-icons/ri";
+import { FiShare2 } from "react-icons/fi";
+import { Truck, CornerDownLeft } from "lucide-react";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -73,9 +74,30 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                     <FiShare2 className="text-lg" />
                     <p>Share</p>
                 </div>
+
             </div>
 
-            
+            <div className="flex flex-col">
+                <div className="border border-lightColor/25 border-b-0 p-3 flex items-center gap-2.5">
+                    <Truck size={30} className="text-shop_orange" />
+
+                    <div>
+                        <p className="text-base font-semibold text-black">Free Delivery</p>
+                        <p className="text-sm text-gray-500 underline underline-offset-2">Enter your Postal kode for Delivery Availability</p>
+                    </div>
+                </div>
+
+                <div className="border border-lightColor/25 p-3 flex items-center gap-2.5">
+                    <CornerDownLeft size={30} className="text-shop_orange" />
+                    <div>
+                        <p className="text-base font-semibold text-black">Return Delivery</p>
+                        
+                        <p className="text-sm text-gray-500">Free 30days Delivery Returns.{" "}
+                            <span className="font-semibold">Learn more</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </Container>
 )};
