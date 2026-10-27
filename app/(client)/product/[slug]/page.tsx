@@ -9,6 +9,7 @@ import FavoriteButton from "@/components/FavoriteButton";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
+import { FiShare2 } from "react-icons/ri";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -57,17 +58,24 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
 
             <ProductCharacteristics product={product} />
 
-            <div>
-                <div className="flex items-center gap-2 text-sm text-black hover: text-red-600 hoverEffect">
+            <div className="flex flex-wrap items-center justify-evenly gap-2.5 border-b border-b-gray-200 py-5 -mt-2">
+                <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
                     <FaRegQuestionCircle className="text-lg" />
                     <p>Ask a question</p>
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-black hover: text-red-600 hoverEffect">
+                <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
                     <TbTruckDelivery className="text-lg" />
                     <p>Delivery & Return</p>
                 </div>
+
+                <div className="flex items-center gap-2 text-sm text-black hover:text-red-600 hoverEffect">
+                    <FiShare2 className="text-lg" />
+                    <p>Share</p>
+                </div>
             </div>
+
+            
         </div>
     </Container>
 )};
