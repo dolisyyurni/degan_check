@@ -46,7 +46,10 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
             </div>
 
             <div className="flex items-center gap-2.5 lg:gap-3">
-                <AddToCartButton product={product} />
+                <div className="flex-1">
+                    <AddToCartButton product={product} />
+                </div>
+
                 <FavoriteButton showProduct={true} product={product} />
             </div>
 
