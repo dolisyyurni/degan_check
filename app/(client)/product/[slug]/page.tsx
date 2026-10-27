@@ -11,13 +11,15 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FiShare2 } from "react-icons/fi";
 import { Truck, CornerDownLeft } from "lucide-react";
+import ProductInfoTabs from "@/components/ProductInfoTabs";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
     const product = await getProductBySlug(slug);
 
     return (
-    <Container className="flex flex-col md:flex-row gap-10 py-10">
+    <Container className="flex flex-col gap-10 py-10">
+      <div className="flex flex-col md:flex-row gap-10">
         {product?.images && <ImageView images={product?.images} isStock={product?.stock} />}
 
         <div className="w-full md:w-1/2 flex flex-col gap-5">
@@ -99,6 +101,26 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                 </div>
             </div>
         </div>
+      </div>
+
+      <div className="w-full flex-1">
+      {product && (
+        <ProductInfoTabs
+          product={product}
+          slug={slug}
+          reviews={(product as typeof product & {
+            reviews?: Array<{
+              _id: string;
+              authorName?: string;
+              rating?: number;
+              comment?: string;
+              _createdAt?: string;
+            }>;
+          }).reviews ?? []}
+        />
+      )}
+      </div>
+      
     </Container>
 )};
 

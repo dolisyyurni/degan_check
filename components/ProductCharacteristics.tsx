@@ -7,7 +7,7 @@ const ProductCharacteristics = async ({ product }: { product: Product | null | u
     <Accordion type="single" collapsible>
         <AccordionItem value="item-1" >
             <AccordionTrigger>
-                {product?.name}: Details
+                {product?.name} Details
             </AccordionTrigger>
 
             <AccordionContent>
