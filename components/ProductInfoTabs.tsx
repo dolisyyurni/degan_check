@@ -84,7 +84,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
             <div>
               <h3 className="text-lg font-semibold text-gray-900">Customer Reviews ({reviews.length})</h3>
               {reviews.length === 0 ? (
-                <p className="text-sm text-gray-600 tracking-wide">Belum ada ulasan untuk produk ini. Jadilah yang pertama memberi ulasan.</p>
+                <p className="text-sm text-gray-600 tracking-wide">There are no reviews for this product yet. Be the first to leave a review.</p>
               ) : (
                 <ul className="mt-4 divide-y divide-gray-200">
                   {reviews.map((review) => (
@@ -108,7 +108,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
             </div>
 
             <div className="rounded-lg border border-gray-200 p-5">
-              <h3 className="text-base font-semibold text-gray-900">Tulis ulasan</h3>
+              <h3 className="text-base font-semibold text-gray-900">Write a review</h3>
               <Show when="signed-in">
                 <form action={reviewAction} className="mt-4 space-y-4">
                   <input type="hidden" name="productId" value={product._id} />
@@ -122,11 +122,11 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
                       defaultValue="5"
                       className="mt-1 block w-full rounded-md border border-gray-300 bg-white px-3 py-2"
                     >
-                      <option value="5">5 - Sangat baik</option>
-                      <option value="4">4 - Baik</option>
-                      <option value="3">3 - Cukup</option>
-                      <option value="2">2 - Kurang</option>
-                      <option value="1">1 - Buruk</option>
+                      <option value="5">5 - Excellent</option>
+                      <option value="4">4 - Good</option>
+                      <option value="3">3 - Fair</option>
+                      <option value="2">2 - Poor</option>
+                      <option value="1">1 - Very Poor</option>
                     </select>
                   </label>
                   <label className="block text-sm font-medium text-gray-800" htmlFor="review-comment">
@@ -138,7 +138,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
                       minLength={10}
                       maxLength={1000}
                       rows={4}
-                      placeholder="Ceritakan pengalaman Anda dengan produk ini (10–1000 karakter)."
+                      placeholder="Tell us about your experience with this product (10–1000 characters)."
                       className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2"
                     />
                   </label>
@@ -147,7 +147,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
                     disabled={isPending}
                     className="rounded  px-5 bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect"
                   >
-                    {isPending ? "Mengirim..." : "Kirim ulasan"}
+                    {isPending ? "Sending..." : "Submit a review"}
                   </button>
                   {reviewState.message && (
                     <p role="status" className={reviewState.status === "error" ? "text-red-600" : "text-green-700"}>
@@ -160,7 +160,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
                 <p className="mt-2">
                   <SignInButton mode="modal">
                     <button type="button" className="text-gray-500 underline underline-offset-2 hover:text-shop_light_green">
-                      Login untuk menulis ulasan
+                      Log in to write a review
                     </button>
                   </SignInButton>
                 </p>
