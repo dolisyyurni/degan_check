@@ -80,11 +80,11 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
         )}
 
         {activeTab === "Reviews" && (
-          <div className="max-w-3xl space-y-6">
+          <div className="space-y-6">
             <div>
-              <h3 className="font-semibold text-gray-900">Customer Reviews ({reviews.length})</h3>
+              <h3 className="text-lg font-semibold text-gray-900">Customer Reviews ({reviews.length})</h3>
               {reviews.length === 0 ? (
-                <p className="mt-2">Belum ada ulasan untuk produk ini. Jadilah yang pertama memberi ulasan.</p>
+                <p className="text-sm text-gray-600 tracking-wide">Belum ada ulasan untuk produk ini. Jadilah yang pertama memberi ulasan.</p>
               ) : (
                 <ul className="mt-4 divide-y divide-gray-200">
                   {reviews.map((review) => (
@@ -108,7 +108,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
             </div>
 
             <div className="rounded-lg border border-gray-200 p-5">
-              <h3 className="font-semibold text-gray-900">Tulis ulasan</h3>
+              <h3 className="text-base font-semibold text-gray-900">Tulis ulasan</h3>
               <Show when="signed-in">
                 <form action={reviewAction} className="mt-4 space-y-4">
                   <input type="hidden" name="productId" value={product._id} />
@@ -145,7 +145,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
                   <button
                     type="submit"
                     disabled={isPending}
-                    className="rounded-md bg-shop_dark_green px-5 py-2.5 font-medium text-white hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="rounded  px-5 bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect"
                   >
                     {isPending ? "Mengirim..." : "Kirim ulasan"}
                   </button>
@@ -159,7 +159,7 @@ export default function ProductInfoTabs({ product, slug, reviews = [] }: Product
               <Show when="signed-out">
                 <p className="mt-2">
                   <SignInButton mode="modal">
-                    <button type="button" className="font-semibold text-shop_dark_green underline underline-offset-2">
+                    <button type="button" className="text-gray-500 underline underline-offset-2 hover:text-shop_light_green">
                       Login untuk menulis ulasan
                     </button>
                   </SignInButton>
