@@ -21,7 +21,7 @@ const Shop = async({ categories }: Props) => {
         </div>
 
         <div className="flex flex-col md:flex-row gap-5 border-t border-shop_dark_green/50">
-          <div>
+          <div className="md:sticky md:top-20 md:self-start md:h-[calc(100vh-160px)] md:overflow-hidden md:min-w-64 pb-5 md:border-r border-r-shop_btn_dark_green/50">
             Filter Value
           </div>
 
