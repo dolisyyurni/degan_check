@@ -17,7 +17,7 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
             Product Categories
         </Title>
 
-        <RadioGroup>
+        <RadioGroup className="mt-3">
           {categories?.map((category) => (
             <div key={category?._id} className="flex items-center space-x-2 hover:cursor-pointer">
               <RadioGroupItem value={category?.slug?.current as string} id={category?.slug?.current} className="rounded-sm" />
