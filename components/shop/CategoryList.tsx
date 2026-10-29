@@ -1,3 +1,5 @@
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Title } from '../ui/text';
 import { Category } from '@/sanity.types';
 import React from 'react';
@@ -14,6 +16,16 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
         <Title className="text-base">
             Product Categories
         </Title>
+
+        <RadioGroup>
+          {categories?.map((category) => (
+            <div key={category?._id} className="flex items-center space-x-2 hover:cursor-pointer">
+              <RadioGroupItem value={category?.slug?.current as string} id={category?.slug?.current} className="rounded-sm" />
+
+              <Label>{category?.title}</Label>
+            </div>
+          ))}
+        </RadioGroup>
     </div>
   )
 }
