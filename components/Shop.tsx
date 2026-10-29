@@ -20,8 +20,14 @@ const Shop = async({ categories }: Props) => {
           </div>
         </div>
 
-        <div>
-          
+        <div className="flex flex-col md:flex-row gap-5 border-t border-shop_dark_green/50">
+          <div>
+            Filter Value
+          </div>
+
+          <div>
+            products
+          </div>
         </div>
       </Container>
     </div>
