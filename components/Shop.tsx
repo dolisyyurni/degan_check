@@ -1,8 +1,26 @@
+"use client"
+import { Category } from '@/sanity.types';
 import React from 'react'
+import Container from './Container';
 
-const Shop = () => {
+interface Props {
+  categories: Category[]
+}
+
+const Shop = async({ categories }: Props) => {
+  
   return (
-    <div>Shop</div>
+    <div className="border-t"> 
+      <Container>
+        <div>
+
+        </div>
+
+        <div>
+          
+        </div>
+      </Container>
+    </div>
   )
 }
 
