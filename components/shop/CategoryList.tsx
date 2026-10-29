@@ -5,7 +5,7 @@ import { Category } from '@/sanity.types';
 import React from 'react';
 
 interface Props {
-    caegories: Category[];
+  categories: Category[];
     selectedCategory?: string | null;
     setSelectedCategory: (React.Dispatch<React.SetStateAction<string | null>>);
 }
@@ -17,9 +17,12 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
             Product Categories
         </Title>
 
-        <RadioGroup value={selectedCategory || ""} className="mt-2 space-y-1">
+        <RadioGroup value={selectedCategory || ""} className="mt-4 space-y-1">
           {categories?.map((category) => (
-            <div key={category?._id} className="flex items-center space-x-2 hover:cursor-pointer">
+            <div 
+            onClick={() => {setSelectedCategory(category?.slug?.current as string)}} 
+            key={category?._id} 
+            className="flex items-center space-x-2 hover:cursor-pointer">
               <RadioGroupItem value={category?.slug?.current as string} id={category?.slug?.current} className="rounded-sm" />
 
               <Label htmlFor={category?.slug?.current} className={`${selectedCategory === category?.slug?.current ? "font-semibold text-shop_dark_green" : "font-normal"}`} >

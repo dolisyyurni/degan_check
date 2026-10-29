@@ -12,7 +12,7 @@ interface Props {
   products: Product[]
 }
 
-const Shop = async({ categories }: Props) => {
+const Shop = ({ categories }: Props) => {
   const searchParams = useSearchParams();
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
