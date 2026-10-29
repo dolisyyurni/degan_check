@@ -17,12 +17,14 @@ const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Pro
             Product Categories
         </Title>
 
-        <RadioGroup className="mt-3">
+        <RadioGroup value={selectedCategory || ""} className="mt-2 space-y-1">
           {categories?.map((category) => (
             <div key={category?._id} className="flex items-center space-x-2 hover:cursor-pointer">
               <RadioGroupItem value={category?.slug?.current as string} id={category?.slug?.current} className="rounded-sm" />
 
-              <Label>{category?.title}</Label>
+              <Label htmlFor={category?.slug?.current} className={`${selectedCategory === category?.slug?.current ? "font-semibold text-shop_dark_green" : "font-normal"}`} >
+                {category?.title}
+              </Label>
             </div>
           ))}
         </RadioGroup>
