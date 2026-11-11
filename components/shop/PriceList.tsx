@@ -42,7 +42,7 @@ const PriceList = ({ selectedPrice, setSelectedPrice }: Props) => {
       {selectedPrice && (
         <button
         onClick={() => setSelectedPrice(null)}
-        className="text-sm font-medium mt-2 underline underline-offset-2 decoration-[1px] hover:text-shop_dark_green hoverEffect">
+        className="text-sm font-medium mt-2 underline underline-offset-2 decoration-[1px] text-shop_light_green hover:text-shop_dark_green hoverEffect">
           Reset selection
         </button>
       )}
