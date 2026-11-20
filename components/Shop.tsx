@@ -28,9 +28,17 @@ const Shop = ({ categories }: Props) => {
               Get the food as you crave
             </Title>
 
-            <button className="text-shop_dark_green underline text-sm mt-2 font-medium hover:text-darkRed hover:text-shop_orange hoverEffect">
-              Reset Filters
-            </button>
+            {(selectedCategory !== null || selectedPrice !== null) && (
+              <button 
+              onClick={() => {
+                setSelectedCategory(null);
+                setSelectedPrice(null);
+              }}
+              className="text-shop_dark_green underline text-sm mt-2 font-medium hover:text-darkRed hover:text-shop_orange hoverEffect">
+                Reset Filters
+              </button>
+            )}
+            
           </div>
         </div>
 
