@@ -1,8 +1,10 @@
 "use client"
+import { client } from '@/sanity/lib/client';
+import { Loader2 } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
 import { Title } from './ui/text';
 import { Category, Product } from '@/sanity.types';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from './Container';
 import CategoryList from './shop/CategoryList';
 import PriceList from './shop/PriceList';
@@ -18,6 +20,41 @@ const Shop = ({ categories }: Props) => {
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState< string | null >(null);
   const [selectedPrice, setSelectedPrice] = useState< string | null >(null);
+  const fetchProducts=async()=>{
+    setLoading(true);
+    try {
+      let minPrice = 0;
+      let maxPrice = 100000;
+      if (selectedPrice) {
+        const [min, max] = selectedPrice.split("-").map(Number);
+        minPrice = min;
+        maxPrice = max;
+      }
+      const query = `
+      *[_type == 'product' 
+      && (!defined($selectedCategory) || references(*[_type == "category" && slug.current == $selectedCategory]._id))
+      && price >= $minPrice && price <= $maxPrice]
+      ]
+      | order(name asc) {
+      ...,"categories": categories[]->title}
+      `;
+
+      const data = await client.fetch(
+        query,
+        {selectedCategory, minPrice, maxPrice},
+        {next: { revalidate: 0 } }
+      );
+      setProducts(data);
+    } catch (error) {
+      console.log("Shop Product Fetching  Error", error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, [selectedCategory, selectedPrice]);
   
   return (
     <div className="border-t"> 
@@ -50,7 +87,24 @@ const Shop = ({ categories }: Props) => {
           </div>
 
           <div>
-            products
+            <div className="flex-1 pt-5">
+              <div className="h-[calc(100vh-160px)] overflow-auto pr-2 scrollbar-hide">
+                {loading ? (
+                  <div className="p-20 flex flex-col gap-2 items-center justify-center bg-white">
+                    <Loader2 className="w-10 h-10 text-shop_dark_green animate-spin"/>
+                    <p className="font-semibold tracking-wide text-base">
+                      Loading products...
+                    </p>
+                  </div>
+
+                ) : (
+
+                <div>
+                  Products
+                </div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       </Container>
