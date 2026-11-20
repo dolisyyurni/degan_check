@@ -9,15 +9,18 @@ import CategoryList from './shop/CategoryList';
 import PriceList from './shop/PriceList';
 import NoProductAvailable from '@/components/NoProductAvailable';
 import ProductCard from '@/components/ProductCard';
+import { useSearchParams } from 'next/navigation';
 
 interface Props {
   categories: Category[]
 }
 
 const Shop = ({ categories }: Props) => {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams?.get("category");
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedCategory, setSelectedCategory] = useState< string | null >(null);
+  const [selectedCategory, setSelectedCategory] = useState< string | null >(categoryParam || null);
   const [selectedPrice, setSelectedPrice] = useState< string | null >(null);
   useEffect(() => {
     let cancelled = false;
