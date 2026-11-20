@@ -19,10 +19,10 @@ interface Props {
 
 const PriceList = ({ selectedPrice, setSelectedPrice }: Props) => {
   return (
-    <div className="w-full bg-white p-5">
-      <Title className="text-base" >Price</Title>
+    <div className="w-full bg-white p-4">
+      <Title className="text-sm tracking-normal" >Price</Title>
 
-      <RadioGroup className="mt-2 space-y-1" value={selectedPrice || ""} >
+      <RadioGroup className="mt-2 space-y-1 text-sm" value={selectedPrice || ""} >
         {priceArray?.map((price, index) => (
           <div 
           key={index}

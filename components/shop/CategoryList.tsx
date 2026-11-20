@@ -12,12 +12,12 @@ interface Props {
 
 const CategoryList = ({ categories, selectedCategory, setSelectedCategory }: Props) => {
   return (
-    <div className="w-full bg-white p-5">
-        <Title className="text-base">
+    <div className="w-full bg-white p-4">
+        <Title className="whitespace-nowrap text-sm tracking-normal">
             Product Categories
         </Title>
 
-        <RadioGroup value={selectedCategory || ""} className="mt-4 space-y-1">
+        <RadioGroup value={selectedCategory || ""} className="mt-3 space-y-1 text-sm">
           {categories?.map((category) => (
             <div 
             onClick={() => {setSelectedCategory(category?.slug?.current as string)}} 
