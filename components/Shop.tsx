@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react'
 import Container from './Container';
 import CategoryList from './shop/CategoryList';
 import PriceList from './shop/PriceList';
+import NoProductAvailable from '@/components/NoProductAvailable';
 
 interface Props {
   categories: Category[]
@@ -100,7 +101,12 @@ const Shop = ({ categories }: Props) => {
                 ) : (
 
                 <div>
-                  Products
+                  {products?.length > 0 ? (
+                    <div>
+                      
+                    </div>
+                  ):(
+                  <NoProductAvailable className="bg-white mt-0"/>) }
                 </div>
                 )}
               </div>
