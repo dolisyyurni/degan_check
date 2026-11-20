@@ -9,6 +9,7 @@ import Container from './Container';
 import CategoryList from './shop/CategoryList';
 import PriceList from './shop/PriceList';
 import NoProductAvailable from '@/components/NoProductAvailable';
+import ProductCard from '@/components/ProductCard';
 
 interface Props {
   categories: Category[]
@@ -98,17 +99,16 @@ const Shop = ({ categories }: Props) => {
                     </p>
                   </div>
 
-                ) : (
-
-                <div>
-                  {products?.length > 0 ? (
-                    <div>
-                      
+                ) : products?.length > 0 ? (
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+                      {products?.map((product) => (
+                        <ProductCard key={product._id} product={product} />
+                      ))}
                     </div>
                   ):(
-                  <NoProductAvailable className="bg-white mt-0"/>) }
-                </div>
-                )}
+                  <NoProductAvailable className="bg-white mt-0"/>
+                  )
+                }
               </div>
             </div>
           </div>
