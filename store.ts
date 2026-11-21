@@ -1,6 +1,7 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import { Product } from './sanity.types';
+import { set } from 'sanity';
 
 export interface CartItem {
     product: Product;
@@ -24,7 +25,7 @@ interface StoreState {
     // resetFavorites: () => void;
 }
 
-const useStore = create<StoreState>()(persist((set) => ({
+const useStore = create<StoreState>()(persist((set, get) => ({
     items: [],
     favorites: [],
     addItem: (product) => set((state) => {
@@ -44,13 +45,13 @@ const useStore = create<StoreState>()(persist((set) => ({
             if (item.product._id === productId) {
                 if (item.quantity > 1) {
                     acc.push({ ...item, quantity: item.quantity - 1 });
-                } else {
-                    acc.push(item);
                 }
-                return acc;
-            }, [] as CartItem[]);
-        }))
-    }), 
+            } else {
+                acc.push(item);
+            }
+            return acc;
+        }, [] as CartItem[]),
+    })),
 
     deleteCartProduct: (productId) => set((state) => ({
         items: state.items.filter(
