@@ -19,9 +19,9 @@ interface StoreState {
     getGroupedItems: () => CartItem[];
     // //fav
     favorites: Product[];
-    // addFavorite: (product: Product) => Promise<void>;
-    // removeFavorite: (productId: string) => void;
-    // resetFavorites: () => void;
+    addFavorite: (product: Product) => Promise<void>;
+    removeFavorite: (productId: string) => void;
+    resetFavorite: () => void;
 }
 
 const useStore = create<StoreState>()(persist((set, get) => ({
@@ -80,7 +80,31 @@ const useStore = create<StoreState>()(persist((set, get) => ({
 
     getGroupedItems: () => get().items, 
 
-    }), 
+    addToFavorite: (product: Product) => {
+        return new Promise<void>((resolve) => {
+            set((state: StoreState) => {
+                const isFavorite = state.favoriteProduct.some(
+                    (item) => item._id === product._id
+                );
+                return {
+                    favoriteProduct: isFavorite
+                    ? state.favoriteProduct.filter((item) => item._id !== product._id)
+                    : [...state.favoriteProduct, { ...product }],
+                };
+            });
+            resolve();
+        });
+    },
+
+    removeFromFavorite: (productId: string) => {
+        set((state: StoreeState) => ({
+            favoriteProduct: state.favoriteProduct.filter((item) => item._id !== productId),
+        }))
+    },
+
+    resetFavorite: () => set({ favoriteProduct: [] }),
+    },
+    });
     {
     name: 'cart-store',
     }));
