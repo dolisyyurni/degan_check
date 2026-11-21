@@ -1,7 +1,6 @@
 import {create} from 'zustand';
 import {persist} from 'zustand/middleware';
 import { Product } from './sanity.types';
-import { set } from 'sanity';
 
 export interface CartItem {
     product: Product;
