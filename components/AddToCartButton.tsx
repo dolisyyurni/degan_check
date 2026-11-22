@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import useStore from '@/store';
 import toast from 'react-hot-toast';
 import PriceFormatter from './PriceFormatter';
+import QuantityButtons from './QuantityButtons';
 
 interface Props{
   product: Product;
@@ -33,7 +34,7 @@ const AddToCartButton = ({ product, className }: Props) => {
         <div className="text-sm w-full">
           <div>
             <span className="text-xs text=darkColor/80">
-              Quantity
+              <QuantityButtons />
             </span>
             buttons
           </div>
