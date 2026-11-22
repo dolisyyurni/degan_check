@@ -1,5 +1,7 @@
 "use client"
 
+import NoAccess from "@/components/NoAccess";
+import Container from "@/components/Container";
 import { Address } from "@/sanity.types";
 import useStore from "@/store";
 import { useAuth, useUser } from "@clerk/nextjs";
@@ -22,7 +24,15 @@ const CartPage = () => {
     
   return (
     <div className="bg-gray-50 pb-52 md:pb-10">
-
+        {isSignedIn ? (
+            <Container>
+                <p>
+                    Cart page
+                </p>
+            </Container>
+        ) : (
+            <NoAccess />
+        )}
     </div>
   )
 }
