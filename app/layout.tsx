@@ -9,7 +9,7 @@ const RootLayout = ({children}: {children: React.ReactNode}) => {
             position="bottom-right"
             toastOptions={{
                 style: {
-                    background: "#00000",
+                    background: "#111827",
                     color: "#fff",
                 },
             }}

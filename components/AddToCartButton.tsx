@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import useStore from '@/store';
+import toast from 'react-hot-toast';
 
 interface Props{
   product: Product;
@@ -19,7 +20,7 @@ const AddToCartButton = ({ product, className }: Props) => {
   const handleAddToCart = () => {
     if ((product?.stock as number) > itemCount) {
       addItem(product);
-      toast
+      toast.success(`${product?.name?.substring(0,12)}... added successfully!`);
     }
   }
 
