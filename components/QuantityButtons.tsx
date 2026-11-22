@@ -37,6 +37,7 @@ const QuantityButtons = ({ product, className }: Props) => {
     return (
     <div className={cn("flex items-center gap-1 pb-1 text-base", className)}>
         <Button 
+        onClick={handleRemoveProduct}
         variant="outline" 
         size="icon" 
         disabled={itemCount === 0 || isOutOfStock}
@@ -47,6 +48,7 @@ const QuantityButtons = ({ product, className }: Props) => {
         <span className="font-semibold text-sm w-6 text-center text-darkColor">{itemCount}</span>
 
         <Button
+        onClick={handleAddToCart}
         variant="outline" 
         size="icon" 
         disabled={isOutOfStock}
