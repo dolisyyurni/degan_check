@@ -1,7 +1,17 @@
+import { Product } from '@/sanity.types';
+import useStore from '@/store';
 import React from 'react'
 
-const QuantityButtons = () => {
-  return (
+interface Props {
+    product: Product;
+    className?: string;
+}
+
+const QuantityButtons = ({ product, className }: Props) => {
+    const {addItem, removeItem, getItemCount} = useStore();
+    const itemCount = getItemCount(product?._id);
+    const isOutOfStock = product?.stock === 0;
+    return (
     <div>QuantityButtons</div>
   )
 }

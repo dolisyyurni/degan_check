@@ -34,7 +34,7 @@ const AddToCartButton = ({ product, className }: Props) => {
         <div className="text-sm w-full">
           <div>
             <span className="text-xs text=darkColor/80">
-              <QuantityButtons />
+              <QuantityButtons product={product} />
             </span>
             buttons
           </div>
