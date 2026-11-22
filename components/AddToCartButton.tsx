@@ -6,6 +6,7 @@ import { ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import useStore from '@/store';
 import toast from 'react-hot-toast';
+import PriceFormatter from './PriceFormatter';
 
 interface Props{
   product: Product;
@@ -27,10 +28,32 @@ const AddToCartButton = ({ product, className }: Props) => {
   }
 
   return (
-    <div>
-      <Button onClick={handleAddToCart} disabled={isOutOfStock} className={cn("w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
+    <div className="w-full h-12 flex item-center">
+      {itemCount ? (
+        <div className="text-sm w-full">
+          <div>
+            <span className="text-xs text=darkColor/80">
+              Quantity
+            </span>
+            buttons
+          </div>
+
+          <div className="flex item-center justify-between border-t pt-1">
+            <span className="text-xs font-semibold">
+              Subtotal
+            </span>
+
+            <PriceFormatter amount={product?.price ? product?.price * itemCount : 0} />
+          </div>
+        </div>
+
+      ) : (
+
+        <Button onClick={handleAddToCart} disabled={isOutOfStock} className={cn("w-full bg-shop_dark_green/80 text-lightBg shadow-none border border-shop_dark_green/80 font-semibold tracking-wide text-white hover:bg-shop_dark_green hover:border-shop_dark_green hoverEffect", className)}>
         <ShoppingBag /> {isOutOfStock ? "Out of Stock" : "Add to Cart"}
       </Button>
+      )}
+      
     </div>
   )
 }
