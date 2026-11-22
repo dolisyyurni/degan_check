@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Button } from './ui/button';
 import { ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import useStore from '@/store';
 
 interface Props{
   product: Product;
@@ -11,10 +12,15 @@ interface Props{
 }
 
 const AddToCartButton = ({ product, className }: Props) => {
+  const { addItem, removeItem, getItemCount } = useStore();
+  const itemCount = getItemCount(product._id);
   const isOutOfStock = product?.stock === 0;
 
   const handleAddToCart = () => {
-    window.alert ("Added to Cart")
+    if ((product?.stock as number) > itemCount) {
+      addItem(product);
+      toast
+    }
   }
 
   return (
