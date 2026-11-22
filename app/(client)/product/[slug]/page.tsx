@@ -12,10 +12,15 @@ import { FiShare2 } from "react-icons/fi";
 import { Truck, CornerDownLeft } from "lucide-react";
 import ProductInfoTabs from "@/components/ProductInfoTabs";
 import ProductSideMenu from "@/components/ProductSideMenu";
+import { notFound } from "next/navigation";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
     const product = await getProductBySlug(slug);
+
+    if (!product) {
+        return notFound();
+    }
 
     return (
     <Container className="flex flex-col gap-10 py-10">
