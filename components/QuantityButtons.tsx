@@ -4,6 +4,7 @@ import { Minus, Plus } from 'lucide-react';
 import React from 'react'
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
+import toast from 'react-hot-toast/headless';
 
 interface Props {
     product: Product;
@@ -14,6 +15,24 @@ const QuantityButtons = ({ product, className }: Props) => {
     const {addItem, removeItem, getItemCount} = useStore();
     const itemCount = getItemCount(product?._id);
     const isOutOfStock = product?.stock === 0;
+
+    const handleRemoveProduct = () => {
+        removeItem(product?._id);
+        if (itemCount > 1) {
+            toast.success("Quantity decreased successfully!");
+        } else {
+            toast.success(`${product?.name?.substring(0,12)} removed successfully!`);
+        }
+    };
+
+    const handleAddToCart = () => {
+        if ((product?.stock as number) > itemCount) {
+            addItem(product);
+            toast.success("Quantity increased successfully!");
+        } else {
+            toast.error("Can not add more than available stock");
+        }
+    };
 
     return (
     <div className={cn("flex items-center gap-1 pb-1 text-base", className)}>
