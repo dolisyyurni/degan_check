@@ -21,6 +21,8 @@ const AddToCartButton = ({ product, className }: Props) => {
     if ((product?.stock as number) > itemCount) {
       addItem(product);
       toast.success(`${product?.name?.substring(0,12)}... added successfully!`);
+    } else {
+      toast.error(`Can not add more than available stock.`);
     }
   }
 
