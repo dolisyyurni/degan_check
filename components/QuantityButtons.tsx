@@ -4,7 +4,7 @@ import { Minus, Plus } from 'lucide-react';
 import React from 'react'
 import { cn } from '@/lib/utils';
 import { Button } from './ui/button';
-import toast from 'react-hot-toast/headless';
+import toast from 'react-hot-toast';
 
 interface Props {
     product: Product;
@@ -12,8 +12,11 @@ interface Props {
 }
 
 const QuantityButtons = ({ product, className }: Props) => {
-    const {addItem, removeItem, getItemCount} = useStore();
-    const itemCount = getItemCount(product?._id);
+    const itemCount = useStore((state) =>
+        state.items.find((item) => item.product._id === product._id)?.quantity ?? 0
+    );
+    const addItem = useStore((state) => state.addItem);
+    const removeItem = useStore((state) => state.removeItem);
     const isOutOfStock = product?.stock === 0;
 
     const handleRemoveProduct = () => {
@@ -37,6 +40,7 @@ const QuantityButtons = ({ product, className }: Props) => {
     return (
     <div className={cn("flex items-center gap-1 pb-1 text-base", className)}>
         <Button 
+        type="button"
         onClick={handleRemoveProduct}
         variant="outline" 
         size="icon" 
@@ -48,6 +52,7 @@ const QuantityButtons = ({ product, className }: Props) => {
         <span className="font-semibold text-sm w-6 text-center text-darkColor">{itemCount}</span>
 
         <Button
+        type="button"
         onClick={handleAddToCart}
         variant="outline" 
         size="icon" 

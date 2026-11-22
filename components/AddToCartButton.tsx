@@ -1,6 +1,6 @@
 "use client"
 import { Product } from '@/sanity.types';
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button } from './ui/button';
 import { ShoppingBag } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -15,8 +15,10 @@ interface Props{
 }
 
 const AddToCartButton = ({ product, className }: Props) => {
-  const { addItem, removeItem, getItemCount } = useStore();
-  const itemCount = getItemCount(product._id);
+  const itemCount = useStore((state) =>
+    state.items.find((item) => item.product._id === product._id)?.quantity ?? 0
+  );
+  const addItem = useStore((state) => state.addItem);
   const isOutOfStock = product?.stock === 0;
 
   const handleAddToCart = () => {
@@ -33,10 +35,9 @@ const AddToCartButton = ({ product, className }: Props) => {
       {itemCount ? (
         <div className="text-sm w-full">
           <div className="flex items-center justify-between">
-            <span className="text-xs text=darkColor/80">
+              <span className="text-xs text-darkColor/80">
               <QuantityButtons product={product} />
             </span>
-            buttons
           </div>
 
           <div className="flex item-center justify-between border-t pt-1">
