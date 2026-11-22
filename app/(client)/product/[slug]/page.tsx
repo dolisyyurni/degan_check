@@ -5,13 +5,13 @@ import ImageView from "@/components/ImageView";
 import { StarIcon } from "lucide-react";
 import PriceView from "@/components/PriceView";
 import AddToCartButton from "@/components/AddToCartButton";
-import FavoriteButton from "@/components/FavoriteButton";
 import ProductCharacteristics from "@/components/ProductCharacteristics";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { TbTruckDelivery } from "react-icons/tb";
 import { FiShare2 } from "react-icons/fi";
 import { Truck, CornerDownLeft } from "lucide-react";
 import ProductInfoTabs from "@/components/ProductInfoTabs";
+import ProductSideMenu from "@/components/ProductSideMenu";
 
 const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => {
     const {slug} = await params;
@@ -51,12 +51,12 @@ const SingleProductPage = async ({params}:{params: Promise<{slug: string}>}) => 
                 </p>
             </div>
 
-            <div className="flex items-center gap-2.5 lg:gap-3">
+            <div className="flex items-start gap-2.5 lg:gap-3">
                 <div className="flex-1">
                     <AddToCartButton product={product} />
                 </div>
 
-                <FavoriteButton showProduct={true} product={product} />
+                <ProductSideMenu product={product} inline />
             </div>
 
             <ProductCharacteristics product={product} />

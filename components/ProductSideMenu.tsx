@@ -6,14 +6,14 @@ import { Heart } from "lucide-react";
 import type { MouseEvent } from "react";
 import toast from "react-hot-toast";
 
-const ProductSideMenu = ({product, className,}: {
+const ProductSideMenu = ({product, className, inline = false,}: {
   product: Product;
   className?: string;
+  inline?: boolean;
 }) => {
   const existingProduct = useStore((state) =>
     state.favorites.some((item) => item._id === product._id)
   );
-
   const addFavorite = useStore((state) => state.addFavorite);
 
   const handleFavorite = async (e: MouseEvent<HTMLButtonElement>) => {
@@ -26,16 +26,20 @@ const ProductSideMenu = ({product, className,}: {
   };
   
   return (
-    <div
-      className={cn("absolute top-2 right-2 hover:cursor-pointer", className)}
-    >
+    <div className={cn(inline ? "shrink-0" : "absolute top-2 right-2 hover:cursor-pointer", className)}>
       <button
         type="button"
         onClick={handleFavorite}
         aria-label={existingProduct ? "Remove from favorites" : "Add to favorites"}
-        className={`p-2.5 rounded-full hover:bg-shop_dark_green/80 hover:text-white hoverEffect  ${existingProduct ? "bg-shop_dark_green/80 text-white" : "bg-lightColor/10"}`}
+        aria-pressed={existingProduct}
+        className={cn(
+          inline
+            ? "inline-flex h-9 w-9 items-center justify-center self-start rounded-md border border-shop_light_green/80 hover:bg-shop_dark_green/80 hover:text-white hoverEffect"
+            : "p-2.5 rounded-full hover:bg-shop_dark_green/80 hover:text-white hoverEffect",
+          existingProduct ? "bg-shop_dark_green/80 text-white" : "bg-lightColor/10"
+        )}
       >
-        <Heart size={15} />
+        <Heart size={inline ? 20 : 15} fill={existingProduct ? "currentColor" : "none"} />
       </button>
     </div>
   );
