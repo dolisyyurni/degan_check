@@ -6,26 +6,21 @@ import { Heart } from "lucide-react";
 import type { MouseEvent } from "react";
 import toast from "react-hot-toast";
 
-const ProductSideMenu = ({
-  product,
-  className,
-}: {
+const ProductSideMenu = ({product, className,}: {
   product: Product;
   className?: string;
 }) => {
   const existingProduct = useStore((state) =>
     state.favorites.some((item) => item._id === product._id)
   );
+
   const addFavorite = useStore((state) => state.addFavorite);
 
   const handleFavorite = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (product?._id) {
       await addFavorite(product);
-      toast.success(
-        existingProduct
-          ? "Product removed successfully!"
-          : "Product added successfully!"
+      toast.success(existingProduct ? "Product removed from favorites" : "Product added to favorites successfully!"
       );
     }
   };
