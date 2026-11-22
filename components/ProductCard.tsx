@@ -9,6 +9,7 @@ import AddToWishListButton from './AddToWishListButton'
 import { Title } from './ui/text';
 import PriceView from './PriceView';
 import AddToCartButton from './AddToCartButton';
+import ProductSideMenu from './ProductSideMenu';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
@@ -27,7 +28,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             </Link>
         )}
 
-        <AddToWishListButton product={product} />
+        <ProductSideMenu product={product} />
         {product?.status === "sale" && (
             <p className={cn(
                 "absolute left-2 top-3 z-10 text-xs",
