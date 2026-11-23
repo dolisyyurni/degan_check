@@ -6,6 +6,7 @@ import { Address } from "@/sanity.types";
 import useStore from "@/store";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { useState } from "react";
+import EmptyCart from "@/components/EmptyCart";
 
 const CartPage = () => {
     const {
@@ -26,9 +27,13 @@ const CartPage = () => {
     <div className="bg-gray-50 pb-52 md:pb-10">
         {isSignedIn ? (
             <Container>
-                <p>
-                    Cart page
-                </p>
+                {groupedItems?.length ? (
+                    <>
+                        <p>Products</p>
+                    </>
+                ) : ( 
+                    <EmptyCart />
+                )}
             </Container>
         ) : (
             <NoAccess />
