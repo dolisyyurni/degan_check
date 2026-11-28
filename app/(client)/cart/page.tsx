@@ -75,7 +75,7 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    toast.error("Checkout belum dikonfigurasi. Integrasi pembayaran belum tersedia.");
+    toast.error("Checkout has not been configured. Payment integration is not yet available.");
   };
   return (
     <div className="bg-gray-50 pb-52 md:pb-10">
