@@ -65,7 +65,7 @@ const useStore = create<StoreState>()(persist((set, get) => ({
     ),
 
     getSubTotalPrice: () => get().items.reduce(
-        (total, item) => total + (item.product.price ?? 0) * item.quantity,
+        (total, item) => total + (item.product.price ?? 0) * (1 + (item.product.discount ?? 0) / 100) * item.quantity,
         0
     ),
 
